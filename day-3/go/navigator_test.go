@@ -45,7 +45,7 @@ func TestCountTrees_Simple(t *testing.T) {
 .#..#...#.#`
 
 	want := 7
-	got := CountTrees(input,3,1, true)
+	got := CountTrees(input, 3, 1, true)
 
 	if got != want {
 		t.Errorf("got: %v, want: %v.", got, want)
@@ -56,7 +56,7 @@ func TestCountTrees_Simple(t *testing.T) {
 func TestCountTrees_Input(t *testing.T) {
 	input := loadInput()
 	want := 237
-	got := CountTrees(input,3,1, false)
+	got := CountTrees(input, 3, 1, false)
 
 	if got != want {
 		t.Errorf("got: %v, want: %v.", got, want)

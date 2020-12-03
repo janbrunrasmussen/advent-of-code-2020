@@ -2,14 +2,13 @@ package navigator
 
 import (
 	"fmt"
-	"strings"
 	"math"
+	"strings"
 )
 
 func ParseMap(input string) [][]string {
 
 	lines := strings.Split(input, "\n")
-
 	m := make([][]string, len(lines))
 
 	for i, l := range lines {
@@ -23,18 +22,17 @@ func CountTrees(input string, stepRight, stepDown int, print bool) int {
 
 	m := ParseMap(input)
 	wm := make([][]string, len(m))
-	
 
 	//expand map (number of maps: rows * steps right / diveded by columns - and then round up)
-	for i, r := range m{ 
-		for j := 0; j < int(math.Ceil(float64(stepRight) * float64(len(m)) / float64(len(m[0])))); j++ {
+	for i, r := range m {
+		for j := 0; j < int(math.Ceil(float64(stepRight)*float64(len(m))/float64(len(m[0])))); j++ {
 			wm[i] = append(wm[i], r...)
 		}
 	}
 
 	pos := []int{0, 0}
 	trees := 0
-
+	
 	for {
 		marker := "O"
 
@@ -76,10 +74,9 @@ func CountMoreTrees(input string) int {
 	}
 
 	MoreTrees := 1
-	for _, s := range(steps){
+	for _, s := range steps {
 		MoreTrees = MoreTrees * CountTrees(input, s[0], s[1], false)
 	}
 
 	return MoreTrees
 }
-
