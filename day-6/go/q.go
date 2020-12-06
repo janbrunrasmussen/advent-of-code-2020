@@ -18,9 +18,9 @@ func ParseAnswers(input string) [][]string {
 func CountAnswers(answers [][]string) int {
 	count := 0
 	for _, a := range(answers){
-		set := make(map[string]bool,0)
+		set := make(map[rune]bool,0)
 		for _, c := range(strings.Join(a,"")){
-			set[string(c)]=true
+			set[c]=true
 		}
 		count += len(set)
 	}
@@ -31,7 +31,7 @@ func CountAnswers(answers [][]string) int {
 func CountUbiquitousAnswers(answers [][]string) int {
 	count := 0
 	for _, a := range(answers){
-		set := make(map[string]bool,0)
+		set := make(map[rune]bool,0)
 		// for each answer c person 1
 		for _, c := range(a[0]){
 			u :=true
@@ -45,7 +45,7 @@ func CountUbiquitousAnswers(answers [][]string) int {
 			}
 
 			if u == true {
-				set[string(c)]=true
+				set[c]=true
 			}
 		}
 		count += len(set)
