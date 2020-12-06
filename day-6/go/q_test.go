@@ -41,37 +41,16 @@ a
 
 b`
 	got := ParseAnswers(input)
-	want := []string{"abc", "abc","abac", "aaaa", "b"}
-	if !reflect.DeepEqual(got, want) {
-		t.Errorf("got: %v, want: %v.", got, want)
-	}
-}
-
-func TestParseAnswersPerPerson_Simple(t *testing.T) {
-	input := `abc
-
-a
-b
-c
-
-ab
-ac
-
-a
-a
-a
-a
-
-b`
-	got := ParseAnswersPerPerson(input)
 	want := [][]string{{"abc"}, {"a","b","c"},{"ab","ac"}, {"a","a","a","a"}, {"b"}}
 	if !reflect.DeepEqual(got, want) {
 		t.Errorf("got: %v, want: %v.", got, want)
 	}
 }
 
+
+
 func TestCountAnswers_Simple(t *testing.T) {
-	input := []string{"abc", "abc","abac", "aaaa", "b"}
+	input := [][]string{{"abc"}, {"a","b","c"},{"ab","ac"}, {"a","a","a","a"}, {"b"}}
 	got := CountAnswers(input)
 	want := 11
 	if !reflect.DeepEqual(got, want) {
@@ -98,11 +77,10 @@ func TestCountUbiquitousAnswers_Simple(t *testing.T) {
 }
 
 func TestCountUbiquitousAnswers_Input(t *testing.T) {
-	input := ParseAnswersPerPerson(loadInput())
+	input := ParseAnswers(loadInput())
 	got := CountUbiquitousAnswers(input)
 	want := 3178
 	if !reflect.DeepEqual(got, want) {
 		t.Errorf("got: %v, want: %v.", got, want)
 	}
 }
-

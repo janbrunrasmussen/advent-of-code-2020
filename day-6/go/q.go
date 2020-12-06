@@ -4,18 +4,7 @@ import(
 	"strings"
 )
 
-func ParseAnswers(input string) []string {
-	groups := strings.Split(input, "\n\n")
-	answers := make([]string,0)
-
-	for _, g := range(groups){
-		answers=append(answers, strings.Replace(g,"\n","",-1))
-	}
-
-	return answers
-}
-
-func ParseAnswersPerPerson(input string) [][]string {
+func ParseAnswers(input string) [][]string {
 	groups := strings.Split(input, "\n\n")
 	answers := make([][]string,0)
 
@@ -26,15 +15,13 @@ func ParseAnswersPerPerson(input string) [][]string {
 	return answers
 }
 
-func CountAnswers(answers []string) int {
+func CountAnswers(answers [][]string) int {
 	count := 0
 	for _, a := range(answers){
 		set := make(map[string]bool,0)
-		for _, c := range(a){
-			// fmt.Println(string(c))
+		for _, c := range(strings.Join(a,"")){
 			set[string(c)]=true
 		}
-		// fmt.Println(len(set))
 		count += len(set)
 	}
 
