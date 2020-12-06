@@ -55,23 +55,16 @@ func MaxSeatID(input []string) int {
 }
 
 func FindEmptySeatID(input []string) int {
-	seats := make([]Seat, 0)
+	IDs := make([]int, 0)
 	for _, i := range input {
-		seats = append(seats, ParseSeat(i))
+		IDs = append(IDs, ParseSeat(i).ID)
 	}
 
-	sort.Slice(seats, func(i, j int) bool {
-		return seats[i].ID < seats[j].ID
-	})
+	sort.Ints(IDs)
 
-	for i, seat := range seats {
-		// skip last
-		if i == len(seats)-1 {
-			continue
-		}
-
-		if seat.ID+1 != seats[i+1].ID {
-			return seat.ID + 1
+	for i := 0; i < len(IDs)-1; i++ {
+		if IDs[i]+1 != IDs[i+1] {
+			return IDs[i] + 1
 		}
 	}
 

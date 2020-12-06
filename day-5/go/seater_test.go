@@ -70,23 +70,3 @@ func TestEmptySeats_Input(t *testing.T) {
 		t.Errorf("got: %v, want: %v.", got, want)
 	}
 }
-
-// func TestDojo(t *testing.T) {
-// 	type args struct {
-// 		in string
-// 	}
-// 	tests := []struct {
-// 		name string
-// 		args args
-// 		want map[string]bool
-// 	}{
-// 		// TODO: Add test cases.
-// 	}
-// 	for _, tt := range tests {
-// 		t.Run(tt.name, func(t *testing.T) {
-// 			if got := Dojo(tt.args.in); !reflect.DeepEqual(got, tt.want) {
-// 				t.Errorf("Dojo() = %v, want %v", got, tt.want)
-// 			}
-// 		})
-// 	}
-// }
