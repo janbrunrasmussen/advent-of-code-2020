@@ -1,15 +1,15 @@
 package q
 
-import(
+import (
 	"strings"
 )
 
 func ParseAnswers(input string) [][]string {
 	groups := strings.Split(input, "\n\n")
-	answers := make([][]string,0)
+	answers := make([][]string, 0)
 
-	for _, g := range(groups){
-		answers=append(answers, strings.Split(g,"\n"))
+	for _, g := range groups {
+		answers = append(answers, strings.Split(g, "\n"))
 	}
 
 	return answers
@@ -17,10 +17,10 @@ func ParseAnswers(input string) [][]string {
 
 func CountAnswers(answers [][]string) int {
 	count := 0
-	for _, a := range(answers){
-		set := make(map[rune]bool,0)
-		for _, c := range(strings.Join(a,"")){
-			set[c]=true
+	for _, a := range answers {
+		set := make(map[rune]bool, 0)
+		for _, c := range strings.Join(a, "") {
+			set[c] = true
 		}
 		count += len(set)
 	}
@@ -30,15 +30,15 @@ func CountAnswers(answers [][]string) int {
 
 func CountUbiquitousAnswers(answers [][]string) int {
 	count := 0
-	for _, a := range(answers){
+	for _, a := range answers {
 		// for each answer c person 1
-		for _, c := range(a[0]){
-			u :=true
+		for _, c := range a[0] {
+			u := true
 			// for each other person o except first person
-			for _, o := range(a[0:]){
-				// if first persons answer c is not in other person o anwers 
+			for _, o := range a[0:] {
+				// if first persons answer c is not in other person o anwers
 				// then it's not ubiquitous
-				if !strings.Contains(o,string(c)){
+				if !strings.Contains(o, string(c)) {
 					u = false
 				}
 			}
